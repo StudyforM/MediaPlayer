@@ -14,7 +14,6 @@ import android.util.Log;
 import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity {
-    // https://qiita.com/wakwak/items/90a71271a73131f82304
     private static final int REQUEST_EXTERNAL_STORAGE = 1;
     private static String[] PERMISSIONS_STORAGE = {
             Manifest.permission.READ_EXTERNAL_STORAGE,
@@ -23,14 +22,12 @@ public class MainActivity extends AppCompatActivity {
 
     // Permission denied
     private static final String PATH = "/storage/self/primary/DCIM/Camera/XAVCS_4K.MP4";
-    private static final String TAG = "CSM";
-
+    private static final String TAG = "CustomizableSimpleMediaplayer";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         // Copy & Paste
         int permission = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
         if (permission != PackageManager.PERMISSION_GRANTED) {
@@ -41,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
                     REQUEST_EXTERNAL_STORAGE
             );
         }
-
         // https://developer.android.com/reference/android/media/MediaExtractor
         MediaExtractor extractor = new MediaExtractor();
         try {
@@ -61,11 +57,4 @@ public class MainActivity extends AppCompatActivity {
         }
         Log.d(TAG, "setDataSource is end");
     }
-
-
-
-
-
-
-
 }
